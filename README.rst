@@ -64,22 +64,23 @@ Commands usage
 
 After installation and configuration you can use all commands of application like in following example from TYPO3 preset:
 
-   ::
+::
 
-   dep typo3cms:database:updateschema live
+  dep typo3cms:database:updateschema live
 
 
 If you want to see the output of command then use -vvv switch. Example:
 
-   ::
+::
 
-   dep typo3:cleanup:deletedrecords live -vvv
+  dep typo3:cleanup:deletedrecords live -vvv
 
 If you want to add some option then use "--bulk-task-option" option and put whole option inside. Example:
 
-   ::
+::
 
-   dep typo3cms:database:updateschema live --bulk-task-option="--schema-update-types=\"*.add\""
+  dep typo3cms:database:updateschema live --bulk-task-option="--schema-update-types=\"*.add\""
+
 
 
 Your presets

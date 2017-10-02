@@ -1,0 +1,18 @@
+{
+  "name": "sourcebroker/deployer-bulk-tasks",
+  "description": "Provides bulk deployer cli commands for any application that provides raw list of cli commands.",
+  "license": "MIT",
+  "keywords": [
+    "deployer"
+  ],
+  "authors": [
+    {
+      "name": "Krystian Szymukowicz",
+      "email": "k.szymukowicz@gmail.com"
+    },
+    {
+      "name": "Michał Jankiewicz",
+      "email": "michaljankiewicz@gmail.com"
+    }
+  ]
+}

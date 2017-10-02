@@ -6,3 +6,4 @@ Changelog
 ~~~~~
 
 1) [TASK] Init version of Deployer Bulk Task.
+2) [DOCS] Docs update.

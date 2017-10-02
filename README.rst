@@ -48,18 +48,14 @@ Installation
 
    where the params means:
 
-   a) *prefix*
-      A prefix that will be put before each command from cli. For example if you have help command in Magento2
-      and call it "php bin/magento help" then now you will call it "dep magento:help live".
+   **prefix** - a prefix that will be put before each command from cli. For example if you have help command in Magento2
+   and call it "php bin/magento help" then now you will call it "dep magento:help live".
 
-   b) *binary*
-      cli application binary.
+   **binary** - cli application binary.
 
-   c) *command*
-      A command that together with binary will output raw command list like "php bin/magento list --raw".
+   **command** - a command that together with binary will output raw command list like "php bin/magento list --raw".
 
-   d) *binary_required*
-      If true then the php exception will be thrown if binary is not found.
+   **binary_required** - if true then the php exception will be thrown if binary is not found.
 
 
 
@@ -67,17 +63,20 @@ Commands usage
 --------------
 
 After installation and configuration you can use all commands of application like in following example from TYPO3 preset:
+
    ::
 
    dep typo3cms:database:updateschema live
 
 
 If you want to see the output of command then use -vvv switch. Example:
+
    ::
 
    dep typo3:cleanup:deletedrecords live -vvv
 
 If you want to add some option then use "--bulk-task-option" option and put whole option inside. Example:
+
    ::
 
    dep typo3cms:database:updateschema live --bulk-task-option="--schema-update-types=\"*.add\""

@@ -40,8 +40,19 @@ Installation
           [
               'prefix' => 'magento',
               'binary' => './bin/magento',
-              'command' => 'list --raw',
               'binary_required' => true,
+              'command' => 'list --raw',
+              'command_filter' => '',
+              'command_fallback' => '
+                    help                                      Displays help for a command
+                    list                                      Lists commands
+                    admin:user:create                         Creates an administrator
+                    admin:user:unlock                         Unlock Admin Account
+                    app:config:dump                           Create dump of application
+                    ...
+                    ...
+                    ...
+              '
           ],
       ]);
       require('./vendor/sourcebroker/deployer-bulk-tasks/src/BulkTasks.php');
@@ -53,9 +64,17 @@ Installation
 
    **binary** - cli application binary.
 
+   **binary_required** - if true then the php exception will be thrown if binary is not found.
+
    **command** - a command that together with binary will output raw command list like "php bin/magento list --raw".
 
-   **binary_required** - if true then the php exception will be thrown if binary is not found.
+   **command_filter** - a string to be used in preg_match to filter commands that should be deployer tasks because usually
+                        we do nto need all commands to be available as deployer tasks. Example "/database:/". This commands
+                        are without prefix yet.
+
+   **command_fallback** - a string that contains all commands with description that you want to be deployer tasks. This
+                        is a fallback when our local binary will fail to return list of commands for whatever reason.
+
 
 
 

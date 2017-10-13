@@ -60,24 +60,25 @@ Installation
    where the params means:
 
    **prefix**
-     a prefix that will be put before each command from cli. For example if you have help command in Magento2
-     and call it "php bin/magento help" then now you will call it "dep magento:help live".
+     A prefix that will be put before each to command from cli to build deployer task name. You can consider that a
+     namespace for deployer tasks. Usually it will be framework name, like "magento", "typo3". See folder with presets
+     for example.
 
    **binary**
-     cli application binary
+     Cli application binary.
 
    **binary_required**
-     if true then the php exception will be thrown if binary is not found.
+     If true then the php exception will be thrown if binary is not found.
 
    **command**
-     a command that together with binary will output raw command list like "php bin/magento list --raw".
+     A command that together with binary will output raw command list like "php bin/magento list --raw".
 
    **command_filter**
-     a string to be used in preg_match to filter commands that should be deployer tasks because usually
+     A string to be used in preg_match to filter commands that should be deployer tasks because usually
      we do not need all commands to be available as deployer tasks. Example "/database:/".
 
    **command_fallback**
-     a string that contains all commands with description that you want to be deployer tasks. This is a fallback when
+     A string that contains all commands with description that you want to be deployer tasks. This is a fallback when
      our local binary will fail to return list of commands for whatever reason.
 
 

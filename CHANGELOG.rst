@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+1.1.1
+~~~~~
+
+1) [BUGFIX] Fix fallback command not exploded/trimmed.
+
 1.1.0
 ~~~~~
 

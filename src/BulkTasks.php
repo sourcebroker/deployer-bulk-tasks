@@ -13,7 +13,9 @@ call_user_func(function () {
                 exec($bulkTaskBinary . ' ' . $bulkTask['command'], $commands, $exitStatus);
                 if ($exitStatus !== 0) {
                     if ($bulkTask['command_fallback'] !== null) {
-                        $commands = trim($bulkTask['command_fallback']);
+                        $commands = array_map(function ($item) {
+                            return trim($item);
+                        }, preg_split('/\R/', trim($bulkTask['command_fallback'])));
                     } else {
                         throw new \Exception('Command: "' . $bulkTaskBinary . ' ' . $bulkTask['command'] . '"' .
                             ' executed with error.');

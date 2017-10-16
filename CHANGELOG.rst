@@ -2,6 +2,12 @@
 Changelog
 ---------
 
+1.1.2
+~~~~~
+
+1) [TASK] Remove task name checks and exceptions because there is fallback
+   now for error output and php warnings were going as tasks.
+
 1.1.1
 ~~~~~
 

@@ -22,42 +22,32 @@ call_user_func(function () {
                     }
                 }
                 foreach ($commands as $commandRawLine) {
-                    preg_match('/^([a-zA-Z:]+)/', $commandRawLine, $match);
+                    preg_match('/^([a-z:]+)/', $commandRawLine, $match);
                     if (is_array($match) && isset($match[1])) {
                         $taskKey = trim($match[1]);
                         if (!empty($bulkTask['command_filter']) && !preg_match($bulkTask['command_filter'], $taskKey)) {
                             continue;
                         }
                         $taskDescription = trim(substr($commandRawLine, strlen($taskKey)));
-                        if (preg_match('/^[a-zA-Z:]+$/', $taskKey)) {
-                            \Deployer\task($bulkTask['prefix'] . ':' . $taskKey,
-                                function () use ($taskKey, $bulkTaskBinary) {
-                                    $option = '';
-                                    if (\Deployer\input()->hasOption('bulk-task-option')) {
-                                        $option = \Deployer\input()->getOption('bulk-task-option');
-                                    }
-                                    if (\Deployer\get('bin/' . pathinfo($bulkTaskBinary, PATHINFO_FILENAME),
-                                            false) !== false) {
-                                        $bulkTaskBinary = '{{bin/' . pathinfo($bulkTaskBinary,
-                                                PATHINFO_FILENAME) . '}}';
-                                    }
-                                    $activeDir = \Deployer\test('[ -e {{deploy_path}}/release ]') ?
-                                        \Deployer\get('deploy_path') . '/release' :
-                                        \Deployer\get('deploy_path') . '/current';
-                                    \Deployer\run('cd ' . $activeDir . ' && 
+                        \Deployer\task($bulkTask['prefix'] . ':' . $taskKey,
+                            function () use ($taskKey, $bulkTaskBinary) {
+                                $option = '';
+                                if (\Deployer\input()->hasOption('bulk-task-option')) {
+                                    $option = \Deployer\input()->getOption('bulk-task-option');
+                                }
+                                if (\Deployer\get('bin/' . pathinfo($bulkTaskBinary, PATHINFO_FILENAME),
+                                        false) !== false) {
+                                    $bulkTaskBinary = '{{bin/' . pathinfo($bulkTaskBinary,
+                                            PATHINFO_FILENAME) . '}}';
+                                }
+                                $activeDir = \Deployer\test('[ -e {{deploy_path}}/release ]') ?
+                                    \Deployer\get('deploy_path') . '/release' :
+                                    \Deployer\get('deploy_path') . '/current';
+                                \Deployer\run('cd ' . $activeDir . ' && 
                                     {{bin/php}} ' . $bulkTaskBinary . ' ' . $taskKey . ' ' . $option);
-                                })->desc($taskDescription);
-                        } else {
-                            throw new \Exception('Task key: "' . $taskKey . '" is not valid name for task.' .
-                                "\n" . 'Raw command line parsed was: "' . $commandRawLine . '"' . "\n" .
-                                "\n" . 'Pregmatch result is: ' . print_r($match, true));
-                        }
-                    } else {
-                        throw new \Exception('Parsing raw command line: "' . $commandRawLine . '"' . "\n" .
-                            'Pregmatch result is: ' . print_r($match, true));
+                            })->desc($taskDescription);
                     }
-                } // foreach $commands
-
+                }
             } else {
                 if ($bulkTask['binary_required']) {
                     throw new \Exception('Binary required but not found: "' . $bulkTaskBinary . '"');

@@ -43,6 +43,7 @@ Installation
               'binary_required' => true,
               'command' => 'list --raw',
               'command_filter' => '',
+              'command_required' => '',
               'command_fallback' => '
                     help                                      Displays help for a command
                     list                                      Lists commands
@@ -57,10 +58,13 @@ Installation
       ]);
       require('./vendor/sourcebroker/deployer-bulk-tasks/src/BulkTasks.php');
 
-   where the params means:
+
+
+Options
+-------
 
    **prefix**
-     A prefix that will be put before each to command from cli to build deployer task name. You can consider that a
+     A prefix that will be put before each command from cli to build deployer task name. You can consider that a
      namespace for deployer tasks. Usually it will be framework name, like "magento", "typo3". See folder with presets
      for example.
 
@@ -75,12 +79,15 @@ Installation
 
    **command_filter**
      A string to be used in preg_match to filter commands that should be deployer tasks because usually
-     we do not need all commands to be available as deployer tasks. Example "/database:/".
+     we do not need all commands to be available as deployer tasks. Example "/.*database:.*/".
 
    **command_fallback**
-     A string that contains all commands with description that you want to be deployer tasks. This is a fallback when
-     our local binary will fail to return list of commands for whatever reason.
+     A string that contains all commands that you want to be deployer tasks. This is a fallback which is used ONLY when
+     binary will fail to return list of commands (return exit different than 0).
 
+   **command_required**
+     A string that contains all commands that you want to be deployer tasks. This is a fallback which is used ALWAYS
+     even if binary will return list of commands. They are merged with commands returned by binary.
 
 Commands usage
 --------------

@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+1.2.0
+~~~~~
+
+1) [FEATURE] Add support for commands_required / add docs.
+
 1.1.2
 ~~~~~
 

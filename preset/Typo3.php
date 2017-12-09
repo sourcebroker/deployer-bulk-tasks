@@ -1,13 +1,14 @@
 <?php
 
 \Deployer\set('bulk_tasks', [
-        [
-            'prefix' => 'typo3',
-            'binary' => './vendor/bin/typo3',
-            'binary_required' => true,
-            'command' => 'list --raw',
-            'command_filter' => '',
-            'command_fallback' => '
+    [
+        'prefix' => 'typo3',
+        'binary' => './vendor/bin/typo3',
+        'binary_required' => true,
+        'command' => 'list --raw',
+        'command_filter' => '',
+        'command_required' => '',
+        'command_fallback' => '
                 autocomplete Generate shell auto complete script
                 backend:lock Lock backend
                 backend:lockforeditors Lock backend for editors
@@ -47,8 +48,7 @@
                 upgrade:list List upgrade wizards
                 upgrade:wizard Execute a single upgrade wizard
         '
-        ]
     ]
-);
+]);
 
 require('./vendor/sourcebroker/deployer-bulk-tasks/src/BulkTasks.php');

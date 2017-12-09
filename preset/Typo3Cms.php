@@ -7,6 +7,7 @@
         'binary_required' => true,
         'command' => 'help --raw',
         'command_filter' => '',
+        'command_required' => '',
         'command_fallback' => '
                 help                                                     Displays help for a command
                 list                                                     Lists commands

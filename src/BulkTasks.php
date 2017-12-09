@@ -21,6 +21,9 @@ call_user_func(function () {
                             ' executed with error.');
                     }
                 }
+                $commands = array_merge($commands, array_map(function ($item) {
+                    return trim($item);
+                }, preg_split('/\R/', trim($bulkTask['command_required']))));
                 foreach ($commands as $commandRawLine) {
                     preg_match('/^([a-z:]+)/', $commandRawLine, $match);
                     if (is_array($match) && isset($match[1])) {

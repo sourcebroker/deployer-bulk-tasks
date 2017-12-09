@@ -63,31 +63,31 @@ Installation
 Options
 -------
 
-   **prefix**
-     A prefix that will be put before each command from cli to build deployer task name. You can consider that a
-     namespace for deployer tasks. Usually it will be framework name, like "magento", "typo3". See folder with presets
-     for example.
+**prefix**
+ A prefix that will be put before each command from cli to build deployer task name. You can consider that a
+ namespace for deployer tasks. Usually it will be framework name, like "magento", "typo3". See folder with presets
+ for example.
 
-   **binary**
-     Cli application binary.
+**binary**
+ Cli application binary.
 
-   **binary_required**
-     If true then the php exception will be thrown if binary is not found.
+**binary_required**
+ If true then the php exception will be thrown if binary is not found.
 
-   **command**
-     A command that together with binary will output raw command list like "php bin/magento list --raw".
+**command**
+ A command that together with binary will output raw command list like "php bin/magento list --raw".
 
-   **command_filter**
-     A string to be used in preg_match to filter commands that should be deployer tasks because usually
-     we do not need all commands to be available as deployer tasks. Example "/.*database:.*/".
+**command_filter**
+ A string to be used in preg_match to filter commands that should be deployer tasks because usually
+ we do not need all commands to be available as deployer tasks. Example "/.*database:.*/".
 
-   **command_fallback**
-     A string that contains all commands that you want to be deployer tasks. This is a fallback which is used ONLY when
-     binary will fail to return list of commands (return exit different than 0).
+**command_fallback**
+ A string that contains all commands that you want to be deployer tasks. This is a fallback which is used ONLY when
+ binary will fail to return list of commands (return exit different than 0).
 
-   **command_required**
-     A string that contains all commands that you want to be deployer tasks. This is a fallback which is used ALWAYS
-     even if binary will return list of commands. They are merged with commands returned by binary.
+**command_required**
+ A string that contains all commands that you want to be deployer tasks. This is a fallback which is used ALWAYS
+ even if binary will return list of commands. They are merged with commands returned by binary.
 
 Commands usage
 --------------

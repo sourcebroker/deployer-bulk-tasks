@@ -6,6 +6,7 @@ Changelog
 ~~~~~
 
 1) [FEATURE] Add support for commands_required / add docs.
+2) [TASK] Extend pregmatch for task name to digits also.
 
 1.1.2
 ~~~~~

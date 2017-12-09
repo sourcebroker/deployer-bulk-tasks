@@ -25,7 +25,7 @@ call_user_func(function () {
                     return trim($item);
                 }, preg_split('/\R/', trim($bulkTask['command_required']))));
                 foreach ($commands as $commandRawLine) {
-                    preg_match('/^([a-z:]+)/', $commandRawLine, $match);
+                    preg_match('/^([a-z0-9:]+)/', $commandRawLine, $match);
                     if (is_array($match) && isset($match[1])) {
                         $taskKey = trim($match[1]);
                         if (!empty($bulkTask['command_filter']) && !preg_match($bulkTask['command_filter'], $taskKey)) {

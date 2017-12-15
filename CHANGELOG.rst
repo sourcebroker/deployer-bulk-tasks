@@ -6,6 +6,7 @@ Changelog
 ~~~~~
 
 1) [TASK] Check if values in array are set before using them.
+2) [TASK] Extend binary files exception text to be more informative.
 
 1.2.1
 ~~~~~

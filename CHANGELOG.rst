@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+1.2.2
+~~~~~
+
+1) [TASK] Check if values in array are set before using them.
+
 1.2.1
 ~~~~~
 

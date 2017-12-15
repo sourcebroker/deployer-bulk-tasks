@@ -19,7 +19,7 @@ call_user_func(function () {
                             }, preg_split('/\R/', trim($bulkTask['command_fallback'])));
                         } else {
                             throw new \Exception('Command: "' . $bulkTaskBinary . ' ' . $bulkTask['command'] . '"' .
-                                ' executed with error.');
+                                ' executed with error. Set "command_fallback" if you want to proceed when binary commands fails.');
                         }
                     }
                     if (!empty($bulkTask['command_required'])) {

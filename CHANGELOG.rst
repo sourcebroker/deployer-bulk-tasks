@@ -2,6 +2,13 @@
 Changelog
 ---------
 
+2.0.0
+~~~~~
+
+1) [BREAKING] Remove commands_required as they are too close to commands_fallback.
+2) [FEATURE] Make command exec independent of binary execution. This way we can create deployer tasks without executing
+   binary.
+
 1.2.2
 ~~~~~
 

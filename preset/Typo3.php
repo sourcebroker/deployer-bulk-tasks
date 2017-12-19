@@ -7,7 +7,6 @@
         'binary_required' => true,
         'command' => 'list --raw',
         'command_filter' => '',
-        'command_required' => '',
         'command_fallback' => '
                 autocomplete Generate shell auto complete script
                 backend:lock Lock backend

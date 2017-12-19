@@ -43,10 +43,7 @@ Installation
               'binary_required' => true,
               'command' => 'list --raw',
               'command_filter' => '',
-              'command_required' => '',
               'command_fallback' => '
-                    help                                      Displays help for a command
-                    list                                      Lists commands
                     admin:user:create                         Creates an administrator
                     admin:user:unlock                         Unlock Admin Account
                     app:config:dump                           Create dump of application
@@ -82,12 +79,8 @@ Options
  we do not need all commands to be available as deployer tasks. Example "/.*database:.*/".
 
 **command_fallback**
- A string that contains all commands that you want to be deployer tasks. This is a fallback which is used ONLY when
- binary will fail to return list of commands (return exit different than 0).
-
-**command_required**
- A string that contains all commands that you want to be deployer tasks. This is a fallback which is used ALWAYS
- even if binary will return list of commands. They are merged with commands returned by binary.
+ A string that contains commands that you want to be deployer tasks and that are added independent of what will be
+ returned from cli binary.
 
 Commands usage
 --------------

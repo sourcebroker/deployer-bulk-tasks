@@ -6,16 +6,11 @@ call_user_func(function () {
         foreach (\Deployer\get('bulk_tasks') as $bulkTask) {
             $commands = [];
             $bulkTaskBinary = !empty($bulkTask['binary']) ? $bulkTask['binary'] : null;
-            if ($bulkTaskBinary && file_exists($bulkTaskBinary)) {
+            if ($bulkTaskBinary && file_exists($bulkTaskBinary) && !empty($bulkTask['command'])) {
                 // We looking for available commands on local instance because "dep list" does not yet have target stage.
                 // This assume of course that local and remote instances have the same version of commands which should
                 // be true for most cases.
-
-                if (!empty($bulkTask['command'])) {
-                    exec($bulkTaskBinary . ' ' . $bulkTask['command'], $commands, $exitStatus);
-                } else {
-                    throw new \Exception('Command not set for the binary.');
-                }
+                exec($bulkTaskBinary . ' ' . $bulkTask['command'], $commands, $exitStatus);
             } else {
                 if (!empty($bulkTask['binary_required'])) {
                     throw new \Exception('Binary required but not found: "' . $bulkTaskBinary . '"');
@@ -51,8 +46,8 @@ call_user_func(function () {
                             $activeDir = \Deployer\test('[ -e {{deploy_path}}/release ]') ?
                                 \Deployer\get('deploy_path') . '/release' :
                                 \Deployer\get('deploy_path') . '/current';
-                            \Deployer\run('cd ' . $activeDir . ' && 
-                                    {{bin/php}} ' . $bulkTaskBinary . ' ' . $taskKey . ' ' . $option);
+                            \Deployer\run('cd ' . $activeDir . ' &&  {{bin/php}} '
+                                . $bulkTaskBinary . ' ' . $taskKey . ' ' . $option);
                         })->desc($taskDescription);
                 }
             }

@@ -2,10 +2,16 @@
 Changelog
 ---------
 
+2.1.0
+~~~~~
+
+1) [FEATURE] Join $bulkTask['command'] check to one condition together with $bulkTaskBinary to allow to not exec binary
+    when only 'commands_fallback' are used.
+
 2.0.0
 ~~~~~
 
-1) [BREAKING] Remove commands_required as they are too close to commands_fallback.
+1) [BREAKING] Remove 'commands_required' as they are too close to 'commands_fallback'.
 2) [FEATURE] Make command exec independent of binary execution. This way we can create deployer tasks without executing
    binary.
 

@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+2.2.0
+~~~~~
+
+1) [FEATURE] Add possibility to have "-" char in task names.
+
 2.1.0
 ~~~~~
 

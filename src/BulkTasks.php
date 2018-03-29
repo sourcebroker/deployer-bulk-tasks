@@ -24,7 +24,7 @@ call_user_func(function () {
             }
 
             foreach ($commands as $commandRawLine) {
-                preg_match('/^([a-z0-9:]+)/', $commandRawLine, $match);
+                preg_match('/^([a-z0-9:-]+)/', $commandRawLine, $match);
                 if (is_array($match) && isset($match[1])) {
                     $taskKey = trim($match[1]);
                     if (!empty($bulkTask['command_filter'])

@@ -1,3 +1,5 @@
+! Note - project no longer maintained
+
 deployer-bulk-tasks
 ===================
 
